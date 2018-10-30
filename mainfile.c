@@ -1,81 +1,106 @@
 #include<stdio.h>
 
-//1.Program to divide two numbers
+/*1.Write a program which accept one number from user and print that
+number of even numbers on screen.
+Input : 7
+Output : 2 4 6 8 10 12 14*/
 
-int Divide(int iNo1, int iNo2)
+void PrintEven(int iNo)
 {
- int iAns = 0;
- if(iNo2<0)
+	int i=0;
+ if(iNo <= 0)
  {
- return -1;
+ return;
  }
- iAns = iNo1 / iNo2;
- return iAns;
-}
-
-//2. Program to print 5 times “Marvellous” on screen.
-
-void Display()
-{
- int i = 0;
- for(i = 1; i<=5;i++)
+ for(i=1;i<=iNo;i++)
  {
- printf("Marvellous\n");
+	 printf("%d\t",2*i);
  }
 }
+ 
 
-//3. Program to print 5 to 1 numbers on screen.
-void Display1()
+/*2. Write a program which accept number from user and print even factors of
+that number.
+Input : 24
+Output : 2 4 6 8 12*/
+
+void DisplayEvenFactor(int iNo)
 {
- int i = 5;
- while( i!=0 )
+	int i=0;
+ if(iNo <= 0)
  {
+  iNo = -iNo;
+ }
+ 
+ for(i = 1; i<= iNo ;i++)
+ {
+  if(iNo%2==0)
+ {
+	 printf("%d\t",i);
+  }
+ }
+}
+/*3. Write a program which accept two numbers from user and display its
+common factors.
+Input : 12 18
+Output : 2 3 6*/
+
+void DisplayComFactor(int iNo1, int iNo2)
+{
+ int i = 1;
+ while( (i<= iNo1/2) && (i<=iNo2/2) )
+ {
+ if((iNo1%i == 0) && (iNo2%i==0))
  printf("%d",i);
- i--;
+ i++;
  }
 }
 
-//4. Accept one number and check whether is is divisible by 5 or not.
+/*4. Write a program which accept two numbers from user and display its
+largest common factors.
+Input : 12 18
+Output : 6*/
 
-typedef int BOOL;
-#define TRUE 1
-#define FALSE 0
-BOOL Check(int iNo)
+void DisplayComFactorLarge(int iNo1, int iNo2)
 {
- if(( iNo % 5) == 0)
+ int i = 1;
+ while( (i<= iNo1/2) && (i<=iNo2/2) )
  {
- return TRUE;
- }
- else
+ if((iNo1%i == 0) && (iNo2%i==0))
  {
- return FALSE ;
+	  i++;
  }
+ }
+ printf("%d",i);
+
+ }
+
+/* Accept two characters from user and swap contents of that two
+characters.*/
+
+void Swap(char *ptr1, char *ptr2)
+{
+ char temp;
+ temp=*ptr1;
+ *ptr1=*ptr2;
+ *ptr2=temp;
+ printf("%c\t,%c\t",*ptr1,*ptr2);
 }
 
-//5. Accept one number from user and print that number of * on screen.
+/*6. Accept two integers from user and swap contents of that two integers
+without using temporary variable.*/
 
-void Accept(int iNo)
+void Swap1(int *ptr1, int *ptr2)
 {
- int iCnt = 0;
- for( iCnt=1 ; iCnt<=iNo ;iCnt++ )
- {
- printf(" * ");
- }
-}
-
-//6. Accept one number from user and print that number of * on screen.
-void Accept1(int iNo)
-{
- int iCnt = 0;
- while( iCnt < iNo )
- {
- printf(" * ");
- iCnt++;
- }
+ *ptr1=*ptr1+*ptr2;
+ *ptr2=*ptr1-*ptr2;
+ *ptr1=*ptr1-*ptr2;
+ printf("%d\t%d\t",*ptr1,*ptr2);
 }
 
 //7. Accept one number from user and print that number of * on screen.
-void Accept2(int iNo)
+
+void Accept(int iNo)
 {
  while( iNo > 0 )
  {
@@ -84,113 +109,138 @@ void Accept2(int iNo)
  }
 }
 
-//8. Accept one character from user and display that character on screen.
-void Display2 ( char CValue)
+//8. Accept one character from user and convert case of that character.
+//Input : a
+//Output : A
+
+//Input : D
+//Output : d
+void DisplayConvert ( char CValue)
 {
- printf("%c",CValue);
-}
-
-//9. Accept one number and return that number by subtracting 5 from it.
-int Substract (int iNo)
-{
- int iAns = 0;
- iAns = iNo - 5;
-
- return iAns ;
-}
-
-//10. Accept on number from user if number is less than 10 then print “Hello”
-// otherwise print “Demo”.
-
-void Display3 ( int iNo)
-{
- if(iNo < 10)
+ if((CValue>='a')&&(CValue<='z'))
  {
- printf("Hello");
+	 CValue=CValue-32;
+ printf("%c",CValue);
+ }
+ else if((CValue>='A')&&(CValue<='Z'))
+ {
+	 CValue=CValue+32;
+ printf("%c" ,CValue);
+ }
+}
+
+/*9. Accept one number and print that number of elements from Fibonacci
+series.
+Input : 9
+Output : 1 1 2 3 5 8 13 21 43*/
+
+void Fibonacci (int iNo)
+{
+ int i=0,isum=0;
+ int ino1=0,ino2=1;
+ for(i=0;i<=iNo;i++)
+ {
+	 isum=ino1+ino2;
+	 printf("%d",isum);
+	 ino1=ino2;
+	 ino2=isum;
+ }
+
+}
+
+/*10. Accept on character from user and check whether that character is vowel
+(a,e,i,o,u) or not.
+Input : E
+Output : TRUE
+Input : d
+Output : FALSE*/
+
+void ChkVowel ( char ch)
+{
+ if((ch=='a')||(ch=='e')||(ch=='i')||(ch=='o')||(ch=='u')||(ch=='A')||(ch=='B')||(ch=='C')||(ch=='D')||(ch=='E'))
+ {
+ printf("it is vowel");
  }
  else
  {
- printf("Demo");
+ printf("it is not vowel");
  }
 }
-
 int main()
 {
 	int ivalue1=0,ivalue2=0;
-	char ch='\0';
-	int choice=0,iret=0;
+	//int choice=0;
+	//char ch1='\0';char ch2='\0';
+
 	printf("enter one number");
 	scanf("%d",&ivalue1);
 
 	printf("enter second number");
 	scanf("%d",&ivalue2);
 
+	Fibonacci(ivalue1);
+
+	//PrintEven(ivalue1);
+
+   /* printf("enter choice");
+	scanf("%d",&choice);
+	
+
 	printf("enter character");
-	scanf("%c\n",&ch);
+	scanf("%c\n",&ch1);
 	fflush(stdin);
 
-	printf("enter choice");
-	scanf("%d",&choice);
+	printf("enter character");
+	scanf("%c\n",&ch2);
 
 	switch(choice)
 	{
+
 	case 1:
-		iret= Divide(ivalue1,ivalue2);
-		printf("%d",iret);
+		PrintEven(ivalue1);
 		break;
 
 	case 2:
-		Display();
+		DisplayEvenFactor(ivalue1);
 		break;
 
 	case 3:
-		Display1();
+		DisplayComFactor(ivalue1,ivalue2);
 		break;
 
 	case 4:
-		iret=Check(ivalue1);
-		if(iret==TRUE)
-		{
-			printf("number is Divisible by 5");
-		}
-		else
-		{
-			printf("Number is not divisible by 5");
-		}
+		DisplayComFactorLarge(ivalue1,ivalue2);
 		break;
 
 	case 5:
-		Accept(ivalue1);
+		Swap(&ch1,&ch2);
 		break;
 
 	case 6:
-		Accept1(ivalue1);
+		Swap1(&ivalue1,&ivalue2);
 		break;
 
 	case 7:
-		Accept2(ivalue1);
+		Accept(ivalue1);
 		break;
 
 	case 8:
-		Display2(ch);
+		DisplayConvert(ch1);
 		break;
 
 	case 9:
-		iret=Substract(ivalue1);
-		printf("%d",iret);
+		Fibonacci(ivalue1);
 		break;
 
 	case 10:
-		Display3(ivalue1);
+		ChkVowel(ch1);
 		break;
-	}
+
+	default:
+		printf("invalid input");
+		break;
+
+	}*/
 
 	return 0;
 }
-
-
-
-
-
-		
-
