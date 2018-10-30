@@ -1,246 +1,214 @@
 #include<stdio.h>
 
-/*1.Write a program which accept one number from user and print that
-number of even numbers on screen.
-Input : 7
-Output : 2 4 6 8 10 12 14*/
+/*1.Write a program which accept one number from user and return its
+factorial.
+Input : 5
+Output : 120*/
 
-void PrintEven(int iNo)
+int Factorial(int iNo)
 {
-	int i=0;
- if(iNo <= 0)
+ int iAns = 1;
+ while(iNo!=0)
  {
- return;
+   iAns=iAns*iNo ;
+ iNo-- ;
  }
- for(i=1;i<=iNo;i++)
- {
-	 printf("%d\t",2*i);
- }
+ return iAns;
 }
- 
+/*2. Write a program which accept principle amount, time and create of
+interest from user and calculate simple intrest.
+SimpleIntrest = PrincipleAmount * Time * RateOfIntrest / 100*/
 
-/*2. Write a program which accept number from user and print even factors of
-that number.
-Input : 24
-Output : 2 4 6 8 12*/
-
-void DisplayEvenFactor(int iNo)
+ void SimpleInterest(int principle,int time,int ROI)
 {
-	int i=0;
- if(iNo <= 0)
- {
-  iNo = -iNo;
- }
- 
- for(i = 1; i<= iNo ;i++)
- {
-  if(iNo%2==0)
- {
-	 printf("%d\t",i);
-  }
- }
+	
+	float fans=0.0f;
+	fans=(principle*time*ROI)/(100);
+	printf("\n simple interest is:%f",fans);
 }
+
 /*3. Write a program which accept two numbers from user and display its
-common factors.
-Input : 12 18
-Output : 2 3 6*/
-
-void DisplayComFactor(int iNo1, int iNo2)
-{
- int i = 1;
- while( (i<= iNo1/2) && (i<=iNo2/2) )
- {
- if((iNo1%i == 0) && (iNo2%i==0))
- printf("%d",i);
- i++;
- }
-}
-
-/*4. Write a program which accept two numbers from user and display its
 largest common factors.
 Input : 12 18
 Output : 6*/
 
 void DisplayComFactorLarge(int iNo1, int iNo2)
 {
- int i = 1;
- while( (i<= iNo1/2) && (i<=iNo2/2) )
+ int i=1,iFact=0;
+
+ while((i<=iNo1/2)&&(i<=iNo2/2))
  {
- if((iNo1%i == 0) && (iNo2%i==0))
- {
-	  i++;
+	 if((iNo1%i==0)&&(iNo2%i==0))
+	 {
+		 iFact=i;
+		 i++;
+	 }
  }
- }
- printf("%d",i);
-
- }
-
-/* Accept two characters from user and swap contents of that two
-characters.*/
-
-void Swap(char *ptr1, char *ptr2)
-{
- char temp;
- temp=*ptr1;
- *ptr1=*ptr2;
- *ptr2=temp;
- printf("%c\t,%c\t",*ptr1,*ptr2);
-}
-
-/*6. Accept two integers from user and swap contents of that two integers
-without using temporary variable.*/
-
-void Swap1(int *ptr1, int *ptr2)
-{
- *ptr1=*ptr1+*ptr2;
- *ptr2=*ptr1-*ptr2;
- *ptr1=*ptr1-*ptr2;
- printf("%d\t%d\t",*ptr1,*ptr2);
-}
-
-//7. Accept one number from user and print that number of * on screen.
-
-void Accept(int iNo)
-{
- while( iNo > 0 )
- {
- printf(" * ");
- iNo --;
- }
-}
-
-//8. Accept one character from user and convert case of that character.
-//Input : a
-//Output : A
-
-//Input : D
-//Output : d
-void DisplayConvert ( char CValue)
-{
- if((CValue>='a')&&(CValue<='z'))
- {
-	 CValue=CValue-32;
- printf("%c",CValue);
- }
- else if((CValue>='A')&&(CValue<='Z'))
- {
-	 CValue=CValue+32;
- printf("%c" ,CValue);
- }
-}
-
-/*9. Accept one number and print that number of elements from Fibonacci
-series.
-Input : 9
-Output : 1 1 2 3 5 8 13 21 43*/
-
-void Fibonacci (int iNo)
-{
- int i=0,isum=0;
- int ino1=0,ino2=1;
- for(i=0;i<=iNo;i++)
- {
-	 isum=ino1+ino2;
-	 printf("%d",isum);
-	 ino1=ino2;
-	 ino2=isum;
- }
+	 printf("largest common factor is: %d",iFact);
 
 }
 
-/*10. Accept on character from user and check whether that character is vowel
-(a,e,i,o,u) or not.
-Input : E
-Output : TRUE
-Input : d
-Output : FALSE*/
+//4. Accept three numbers from user and return its average.
 
-void ChkVowel ( char ch)
+float Avg(int iNo1, int iNo2, int iNo3)
 {
- if((ch=='a')||(ch=='e')||(ch=='i')||(ch=='o')||(ch=='u')||(ch=='A')||(ch=='B')||(ch=='C')||(ch=='D')||(ch=='E'))
+ float fAns = 0.0;
+ fAns=(iNo1+iNo2+iNo3)/3;
+ return fAns;
+}
+//5. Accept radius from user and return circumference of circle.
+float Circum(float radius)
+{
+ float circum=0.0f,pi=3.14;
+ circum=2*pi*radius;
+ return circum;
+}
+
+//6. Accept number in decimal format and print its binary equivalent number.
+//Input : 11
+//Output : 1011
+void Binary (int iNo)
+{
+ while(iNo != 0)
  {
- printf("it is vowel");
- }
- else
- {
- printf("it is not vowel");
+ printf("%d", iNo%2);
+ iNo = iNo / 2;
  }
 }
+/*7. Accept range from user and print all numbers between that range.
+Input : 10 17
+Output : 10 11 12 13 14 15 16 17*/
+void DisplayRange(int iStart, int iEnd)
+{
+ int iCnt = 0;
+ if((iStart<0)||(iEnd<0)||(iStart<iEnd))
+ {
+	 return;
+ }
+ for(iCnt=iStart ; iCnt<=iEnd ; iCnt++)
+ {
+
+ printf("%d",iCnt );
+ }
+}
+/*8. Accept range from user and print all even numbers between that range.
+Input : 10 17
+Output : 10 12 14 16*/
+void DisplayRangeEven(int iStart, int iEnd)
+{
+ int iCnt = 0;
+ // Validation
+ for(iCnt=iStart ; iCnt<=iEnd ;iCnt++)
+ {
+ if(iCnt%2==0)
+	 {
+		printf("%d",iCnt);
+	 }
+  }
+}
+
+/*9. Accept range from user and addition of all numbers between that range.
+Input : 10 15
+Output : 75*/
+int SumRange(int iStart, int iEnd)
+{
+ int iCnt = 0;
+ int iSum = 0;
+ 
+ if((iStart<0)||(iEnd<0)||(iStart<iEnd))
+ {
+	 return;
+ }
+ for(iCnt=iStart ; iCnt<=iEnd ; iCnt++)
+ {
+ iSum = iSum+iCnt;
+ }
+ return iSum ;
+}
+/*10. Accept range from user and print all numbers between that range in
+reverse order.
+Input : 10 17
+Output : 17 16 15 14 13 12 11 10*/
+
+void DisplayRangeRev(int iStart, int iEnd)
+{
+ int iCnt = 0;
+ // Validation
+ if((iStart<0)||(iEnd<0)||(iStart<iEnd))
+ {
+	 return;
+ }
+ for(iCnt=iEnd ; iCnt>=iStart ; iCnt--)
+ {
+ printf("%d", iCnt);
+ }
+} 
+
 int main()
 {
-	int ivalue1=0,ivalue2=0;
-	//int choice=0;
-	//char ch1='\0';char ch2='\0';
+	int value1=0,value2=0,value4=0,Choice=0,iret=0;
+	float value3=0.0f,value5=0.0f,fret=0.0f;
 
-	printf("enter one number");
-	scanf("%d",&ivalue1);
+	printf("Enter Number");
+	scanf("%d",&value1);
 
-	printf("enter second number");
-	scanf("%d",&ivalue2);
+	printf("Enter Number");
+	scanf("%d",&value2);
 
-	Fibonacci(ivalue1);
+	printf("Enter Number");
+	scanf("%d",&value4);
 
-	//PrintEven(ivalue1);
+	printf("Enter Number");
+	scanf("%d",&value3);
 
-   /* printf("enter choice");
-	scanf("%d",&choice);
-	
+	printf("Enter Number");
+	scanf("%d",&value5);
 
-	printf("enter character");
-	scanf("%c\n",&ch1);
-	fflush(stdin);
+	printf("Enter Choice");
+	scanf("%d",&Choice);
 
-	printf("enter character");
-	scanf("%c\n",&ch2);
-
-	switch(choice)
+	switch(Choice)
 	{
-
 	case 1:
-		PrintEven(ivalue1);
+		Factorial(value1);
 		break;
 
 	case 2:
-		DisplayEvenFactor(ivalue1);
+		SimpleInterest(value3,value2,value5);
 		break;
 
 	case 3:
-		DisplayComFactor(ivalue1,ivalue2);
+		DisplayComFactorLarge(value1,value2);
 		break;
 
 	case 4:
-		DisplayComFactorLarge(ivalue1,ivalue2);
+		fret= Avg(value1,value2,value4);
 		break;
 
 	case 5:
-		Swap(&ch1,&ch2);
+		fret=Circum(value3);
 		break;
 
 	case 6:
-		Swap1(&ivalue1,&ivalue2);
+		Binary (value1);
 		break;
 
 	case 7:
-		Accept(ivalue1);
+		DisplayRange(value1,value2);
 		break;
 
 	case 8:
-		DisplayConvert(ch1);
+		DisplayRangeEven(value1, value2);
 		break;
 
 	case 9:
-		Fibonacci(ivalue1);
+		iret=SumRange(value1, value2);
+		printf("%d",iret);
 		break;
 
 	case 10:
-		ChkVowel(ch1);
+		DisplayRangeRev(value1, value2);
 		break;
-
-	default:
-		printf("invalid input");
-		break;
-
-	}*/
-
+       }
 	return 0;
 }
